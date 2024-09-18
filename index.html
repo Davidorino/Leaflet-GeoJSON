@@ -34,7 +34,14 @@
 <div id="map" style="width: 600px; height: 400px;"></div>
 <script>
 
-	const map = L.map('map').setView([51.505, -0.09], 13);
+	const map = L.map('map').setView([48.8566, 2.3522], 1.5);
+        }).addTo(map);
+        fetch('https://github.com/Davidorino/Leaflet-GeoJSON/blob/main/map.geojson')
+    .then(response => response.json())
+    .then(data => {
+        L.geoJSON(data).addTo(map);
+    })
+	//const map = L.map('map').setView([51.505, -0.09], 13);
 
 	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 19,
